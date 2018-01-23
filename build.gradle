@@ -28,6 +28,8 @@ dependencies {
 
     playTest "org.assertj:assertj-core:3.6.2"
     playTest "org.awaitility:awaitility:2.0.0"
+    playTest "com.pholser:junit-quickcheck-core:0.7"
+    playTest "com.pholser:junit-quickcheck-generators:0.7"
 }
 
 repositories {
