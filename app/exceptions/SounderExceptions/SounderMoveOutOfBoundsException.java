@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.SounderExceptions;
 
 public class SounderMoveOutOfBoundsException extends RuntimeException  {
 
