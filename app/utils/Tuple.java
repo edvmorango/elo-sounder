@@ -22,4 +22,9 @@ public class Tuple<A,B> {
         Tuple<?,?> tup = (Tuple<?,?>) obj;
         return tup.a.equals(this.a) && tup.b.equals(this.b);
     }
+
+
+
+
+
 }
