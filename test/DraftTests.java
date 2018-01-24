@@ -1,5 +1,6 @@
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import com.pholser.junit.quickcheck.Property;
+import org.junit.runner.RunWith;
 
 public class DraftTests {
 

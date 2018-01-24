@@ -2,6 +2,7 @@ package domain.entities;
 
 import exceptions.SounderExceptions.SounderInvalidActionException;
 import exceptions.SounderExceptions.SounderInvalidDirectionException;
+import exceptions.SounderExceptions.SounderInvalidStartPointException;
 import exceptions.SounderExceptions.SounderMoveOutOfBoundsException;
 import play.Logger;
 import utils.Tuple;
@@ -12,7 +13,13 @@ public class Sounder {
     private Direction direction;
     private Tuple<Integer, Integer> coordinate;
 
-    public Sounder(Plane plane, Tuple<Integer, Integer> coordinate, Direction direction) {
+    public Sounder(Plane plane, Tuple<Integer, Integer> coordinate, Direction direction) throws SounderInvalidStartPointException{
+
+        if(coordinate.a > plane.getBoundX() || coordinate.b > plane.getBoundY())
+            throw new SounderInvalidStartPointException("SounderInvalidStartPointException: "+coordinate+" is above of plane bounds");
+        else if(coordinate.a < 0 || coordinate.b < 0)
+            throw new SounderInvalidStartPointException("SounderInvalidStartPointException: "+coordinate+" is under of plane bounds ");
+
         this.plane = plane;
         this.direction = direction;
         this.coordinate = coordinate;
