@@ -1,57 +1,12 @@
 package domain.entities;
 
+import exceptions.SounderInvalidActionException;
 import exceptions.SounderInvalidDirectionException;
+import exceptions.SounderMoveOutOfBoundsException;
 import play.Logger;
 import utils.Tuple;
 
 public class Sounder {
-
-    public enum Action {RIGHT, LEFT, MOVE}
-
-    public enum Direction {
-        N(0), E(1), S(2), W(3);
-
-        private int value;
-
-         Direction(int value){
-            this.value = value;
-        }
-
-        private Direction getByValue(int value) throws SounderInvalidDirectionException{
-             switch (value) {
-                 case 0: return N;
-                 case 1: return E;
-                 case 2: return S;
-                 case 3: return W;
-                 default: throw new SounderInvalidDirectionException("Invalid direction");
-             }
-        }
-
-        public Direction rotateLeft(){
-           try {
-               if (this.value == 0)
-                   return getByValue(3);
-               else
-                   return getByValue(this.value - 1);
-           } catch (SounderInvalidDirectionException e){
-               Logger.error("Could't rotate left \n"+e.getMessage());
-               return this;
-            }
-        }
-
-        public Direction rotateRight() {
-           try {
-               if (this.value == 3)
-                   return getByValue(0);
-               else
-                   return getByValue(this.value + 1);
-           } catch (SounderInvalidDirectionException e){
-               Logger.error("Could't rotate right \n"+e.getMessage());
-               return this;
-           }
-        }
-
-    }
 
     private Plane plane;
     private Direction direction;
@@ -84,31 +39,104 @@ public class Sounder {
         }
     }
 
-    private void move() {
-        switch (this.direction) {
-            case N:
-                moveY(1);
-                break;
-            case E:
-                moveX(1);
-                break;
-            case S:
-                moveY(-1);
-                break;
-            case W:
-                moveX(-1);
-                break;
-        }
+    private void move() throws SounderMoveOutOfBoundsException{
+            switch (this.direction) {
+                case N:
+                    moveY(1);
+                    break;
+                case E:
+                    moveX(1);
+                    break;
+                case S:
+                    moveY(-1);
+                    break;
+                case W:
+                    moveX(-1);
+                    break;
+            }
     }
 
-    private void moveY(Integer val) {
+    private void moveY(Integer val) throws SounderMoveOutOfBoundsException {
         Integer newY = this.coordinate.b + val;
-        this.coordinate = new Tuple<>(this.coordinate.a, newY);
+
+        if(newY < 0 || newY > this.plane.getBoundY())
+            throw new SounderMoveOutOfBoundsException("SounderMoveOutOfBoundsException: "+this.toString()+" going to Y: "+newY);
+        else
+            this.coordinate = new Tuple<>(this.coordinate.a, newY);
     }
 
-    private void moveX(Integer val) {
+    private void moveX(Integer val) throws SounderMoveOutOfBoundsException {
         Integer newX = this.coordinate.a + val;
-        this.coordinate = new Tuple<>(newX, this.coordinate.b);
+
+        if(newX < 0 || newX > this.plane.getBoundX())
+            throw new SounderMoveOutOfBoundsException("SounderMoveOutOfBoundsException: "+this.toString()+" going to X: "+newX);
+        else
+            this.coordinate = new Tuple<>(newX, this.coordinate.b);
+    }
+
+    public enum Action {
+        MOVE('M'), LEFT('L'), RIGHT('R');
+
+        private char rawValue;
+
+        Action(char value) {
+            this.rawValue = value;
+        }
+
+        public Action getByRawValue(char value) throws SounderInvalidActionException {
+            switch (value) {
+                case 'M': return MOVE;
+                case 'L': return LEFT;
+                case 'R': return RIGHT;
+                default: throw new SounderInvalidActionException("Invalid action "+value);
+            }
+        }
+
+    }
+
+    public enum Direction {
+        N(0), E(1), S(2), W(3);
+
+        private int rawValue;
+
+        Direction(int value){
+            this.rawValue = value;
+        }
+
+        private Direction getByRawValue(int value) throws SounderInvalidDirectionException{
+             switch (value) {
+                 case 0: return N;
+                 case 1: return E;
+                 case 2: return S;
+                 case 3: return W;
+                 default: throw new SounderInvalidDirectionException("Invalid direction "+value);
+             }
+        }
+
+        public Direction rotateLeft() {
+           try {
+               if (this.rawValue == 0)
+                   return getByRawValue(3);
+               else
+                   return getByRawValue(this.rawValue - 1);
+           } catch (SounderInvalidDirectionException e){
+               Logger.error("Could't rotate left \n"+e.getMessage());
+               return this;
+            }
+        }
+
+        public Direction rotateRight() {
+           try {
+               if (this.rawValue == 3)
+                   return getByRawValue(0);
+               else
+                   return getByRawValue(this.rawValue + 1);
+           } catch (SounderInvalidDirectionException e){
+               Logger.error("Could't rotate right \n"+e.getMessage());
+               return this;
+           }
+        }
+
     }
 
 

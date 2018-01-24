@@ -10,4 +10,12 @@ public class Plane {
         this.bounds = bounds;
     }
 
+    public Integer getBoundX() {
+        return this.bounds.a;
+    }
+
+    public Integer getBoundY() {
+        return this.bounds.b;
+    }
+
 }
