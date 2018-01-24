@@ -103,12 +103,12 @@ public class Sounder {
 
     private void moveY(Integer val) {
         Integer newY = this.coordinate.b + val;
-        this.coordinate = new Tuple<Integer, Integer>(this.coordinate.a, newY);
+        this.coordinate = new Tuple<>(this.coordinate.a, newY);
     }
 
     private void moveX(Integer val) {
         Integer newX = this.coordinate.a + val;
-        this.coordinate = new Tuple<Integer, Integer>(newX, this.coordinate.b);
+        this.coordinate = new Tuple<>(newX, this.coordinate.b);
     }
 
 
