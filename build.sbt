@@ -14,8 +14,6 @@ libraryDependencies += guice
 // Testing libraries for dealing with CompletionStage...
 libraryDependencies += "org.assertj" % "assertj-core" % "3.6.2" % Test
 libraryDependencies += "org.awaitility" % "awaitility" % "2.0.0" % Test
-libraryDependencies += "com.pholser" % "junit-quickcheck-core" % "0.7" % Test
-libraryDependencies += "com.pholser" % "junit-quickcheck-generators" % "0.7" % Test
 
 
 // Make verbose tests
