@@ -14,6 +14,7 @@ libraryDependencies += guice
 // Testing libraries for dealing with CompletionStage...
 libraryDependencies += "org.assertj" % "assertj-core" % "3.6.2" % Test
 libraryDependencies += "org.awaitility" % "awaitility" % "2.0.0" % Test
+libraryDependencies += "org.quicktheories" % "quicktheories" % "0.24" % Test
 
 
 // Make verbose tests

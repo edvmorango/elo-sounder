@@ -28,6 +28,7 @@ dependencies {
 
     playTest "org.assertj:assertj-core:3.6.2"
     playTest "org.awaitility:awaitility:2.0.0"
+    playTest 'org.quicktheories:quicktheories:0.24'
 }
 
 repositories {
