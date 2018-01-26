@@ -1,9 +1,7 @@
 package generators;
 
-import domain.entities.Plane;
 import domain.entities.Sounder;
 import org.quicktheories.core.Gen;
-import org.quicktheories.impl.ConcreteDetachedSource;
 import utils.Tuple;
 
 import static org.quicktheories.generators.SourceDSL.integers;
