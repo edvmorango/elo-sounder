@@ -4,3 +4,14 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
+# GET     /                           controllers.PlaneController.get
+
+
+GET     /plane                          controllers.PlaneController.list
+
+
+GET     /assets/*file       controllers.Assets.versioned(path="/public", file: Asset)
+
+GET     /swagger.json       controllers.ApiHelpController.getResources
+GET     /docs/              controllers.Assets.at(path="/public/swagger-ui",file="index.html")
+GET     /docs/*file         controllers.Assets.at(path="/public/swagger-ui",file)
