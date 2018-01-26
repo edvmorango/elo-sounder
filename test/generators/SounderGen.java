@@ -8,19 +8,29 @@ import static org.quicktheories.generators.SourceDSL.integers;
 
 public class SounderGen {
 
-    static Gen<Sounder> sounders(){
+    private PlaneGen planesGen;
+    private UtilsGen utilsGen;
 
-     return   PlaneGen.planes().zip(UtilsGen.points(), Tuple::new)
-                .assuming( t -> t.a.getBoundX() <= t.b.a && t.a.getBoundY() <= t.b.b)
+    public SounderGen() {
+        this.planesGen = new PlaneGen();
+        this.utilsGen = new UtilsGen();
+    }
+
+
+    public Gen<Sounder> sounders(){
+
+     return   planesGen.planes().zip(utilsGen.points(), Tuple::new)
+                .assuming( t -> t.a.getBoundX() >= t.b.a && t.a.getBoundY() >= t.b.b)
                 .zip(directions(), (t,ac) -> new Sounder(t.a,t.b,ac) );
+
     }
 
-    static Gen<Sounder.Direction> directions() {
-       return integers().between(0,Sounder.Direction.values().length).map( v -> Sounder.Direction.values()[v]);
+    public Gen<Sounder.Direction> directions() {
+       return integers().between(0,Sounder.Direction.values().length - 1).map( v -> Sounder.Direction.values()[v]);
     }
 
-    static Gen<Sounder.Action> actions() {
-        return integers().between(0,Sounder.Action.values().length).map( v -> Sounder.Action.values()[v]);
+    public Gen<Sounder.Action> actions() {
+        return integers().between(0,Sounder.Action.values().length - 1).map( v -> Sounder.Action.values()[v]);
     }
 
 }

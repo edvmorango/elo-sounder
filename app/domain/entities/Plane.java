@@ -20,6 +20,11 @@ public class Plane {
 
     }
 
+    @Override
+    public String toString() {
+        return "(" + bounds.a + " " +  bounds.b +")";
+    }
+
     public Integer getBoundX() {
         return this.bounds.a;
     }

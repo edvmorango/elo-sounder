@@ -5,8 +5,14 @@ import org.quicktheories.core.Gen;
 
 public class PlaneGen  {
 
-    static Gen<Plane> planes(){
-        return UtilsGen.points().map(Plane::new);
+    private UtilsGen utilsGen;
+
+    public PlaneGen() {
+        this.utilsGen = new UtilsGen();
+    }
+
+    public Gen<Plane> planes(){
+        return utilsGen.points().assuming( t -> t.a > 0 && t.b > 0 ).map(Plane::new);
     }
 
 

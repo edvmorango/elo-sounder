@@ -1,17 +1,13 @@
-import akka.actor.ActorSystem;
+package unit;
+
 import domain.entities.Plane;
 import domain.entities.Sounder;
 import exceptions.SounderExceptions.SounderInvalidStartPointException;
 import exceptions.SounderExceptions.SounderMoveOutOfBoundsException;
 import org.junit.Test;
-import play.mvc.Result;
-import scala.concurrent.ExecutionContextExecutor;
 import utils.Tuple;
 
-import java.util.concurrent.CompletionStage;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.awaitility.Awaitility.await;
 import static play.test.Helpers.contentAsString;
 
@@ -39,7 +35,7 @@ public class SounderTests {
         s.act(Sounder.Action.MOVE);
         s.act(Sounder.Action.MOVE);
 
-        assertThat(s.toString()).isEqualTo("1 3 N");
+        assertThat(s.getInfo()).isEqualTo("1 3 N");
     }
 
     @Test
@@ -58,7 +54,7 @@ public class SounderTests {
         s.act(Sounder.Action.RIGHT);
         s.act(Sounder.Action.MOVE);
 
-        assertThat(s.toString()).isEqualTo("5 1 E");
+        assertThat(s.getInfo()).isEqualTo("5 1 E");
     }
 
     @Test(expected = SounderInvalidStartPointException.class)

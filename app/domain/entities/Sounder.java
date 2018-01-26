@@ -27,7 +27,8 @@ public class Sounder {
 
     @Override
     public String toString() {
-        return this.coordinate.a
+        return this.plane
+                        + " " + this.coordinate.a
                         + " " + this.coordinate.b
                         + " " + this.direction;
     }
@@ -146,5 +147,19 @@ public class Sounder {
 
     }
 
+    public Plane getPlane() {
+        return plane;
+    }
 
+    public Tuple<Integer, Integer> getCoordinate() {
+        return coordinate;
+    }
+
+    public Direction getDirection() { return direction; }
+
+    public String getInfo() {
+        return this.coordinate.a
+                + " " + this.coordinate.b
+                + " " + this.direction;
+    }
 }
