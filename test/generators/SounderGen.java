@@ -8,7 +8,7 @@ import utils.Tuple;
 
 import static org.quicktheories.generators.SourceDSL.integers;
 
-public class SounderGen extends{
+public class SounderGen {
 
     static Gen<Sounder> sounders(){
 
@@ -18,11 +18,11 @@ public class SounderGen extends{
     }
 
     static Gen<Sounder.Direction> directions() {
-       return integers().between(0,3).map( v -> Sounder.Direction.values()[v]);
+       return integers().between(0,Sounder.Direction.values().length).map( v -> Sounder.Direction.values()[v]);
     }
 
     static Gen<Sounder.Action> actions() {
-        return integers().between(0,2).map( v -> Sounder.Action.values()[v]);
+        return integers().between(0,Sounder.Action.values().length).map( v -> Sounder.Action.values()[v]);
     }
 
 }
