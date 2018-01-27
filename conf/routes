@@ -8,7 +8,7 @@ GET     /                           controllers.HomeController.index
 
 
 GET     /plane                          controllers.PlaneController.list
-GET     /sounder/deploy                 controllers.SounderController.deploy
+POST    /sounder/deploy                 controllers.SounderController.deploy
 
 GET     /assets/*file       controllers.Assets.versioned(path="/public", file: Asset)
 

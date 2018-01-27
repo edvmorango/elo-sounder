@@ -91,7 +91,7 @@ public class Sounder {
             this.rawValue = value;
         }
 
-        public Action getByRawValue(char value) throws SounderInvalidActionException {
+        public static Action getByRawValue(char value) throws SounderInvalidActionException {
             switch (value) {
                 case 'M': return MOVE;
                 case 'L': return LEFT;
@@ -111,7 +111,7 @@ public class Sounder {
             this.rawValue = value;
         }
 
-        private Direction getByRawValue(int value) throws SounderInvalidDirectionException{
+        private Direction getByIntValue(int value) throws SounderInvalidDirectionException{
              switch (value) {
                  case 0: return N;
                  case 1: return E;
@@ -121,12 +121,22 @@ public class Sounder {
              }
         }
 
+        public static Direction getByCharValue(char value){
+            switch (value) {
+                case 'N' : return N;
+                case 'E' : return E;
+                case 'S' : return S;
+                case 'W' : return W;
+                default: throw new SounderInvalidDirectionException("Invalid direction for char: "+value);
+            }
+        }
+
         public Direction rotateLeft() {
            try {
                if (this.rawValue == 0)
-                   return getByRawValue(3);
+                   return getByIntValue(3);
                else
-                   return getByRawValue(this.rawValue - 1);
+                   return getByIntValue(this.rawValue - 1);
            } catch (SounderInvalidDirectionException e){
                Logger.error("Could't rotate left \n"+e.getMessage());
                return this;
@@ -136,9 +146,9 @@ public class Sounder {
         public Direction rotateRight() {
            try {
                if (this.rawValue == 3)
-                   return getByRawValue(0);
+                   return getByIntValue(0);
                else
-                   return getByRawValue(this.rawValue + 1);
+                   return getByIntValue(this.rawValue + 1);
            } catch (SounderInvalidDirectionException e){
                Logger.error("Could't rotate right \n"+e.getMessage());
                return this;
