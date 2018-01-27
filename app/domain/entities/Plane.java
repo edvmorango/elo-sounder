@@ -9,12 +9,12 @@ public class Plane {
 
     public Plane(Tuple<Integer, Integer> bounds) throws PlaneInvalidBoundsException {
 
-        if(bounds.a <= 0  && bounds.b <= 0)
-            throw new PlaneInvalidBoundsException("PlaneInvalidBoundsException: "+bounds+" is not a plane");
-        else if(bounds.a <= 0)
-            throw new PlaneInvalidBoundsException("PlaneInvalidBoundsException: "+bounds.a+" is not a valid bound for X axis");
-        else if(bounds.b <= 0)
-            throw new PlaneInvalidBoundsException("PlaneInvalidBoundsException: "+bounds.b+" is not a valid bound for Y axis");
+        if(bounds.x <= 0  && bounds.y <= 0)
+            throw new PlaneInvalidBoundsException("PlaneInvalidBoundsException: "+bounds+" is not x plane");
+        else if(bounds.x <= 0)
+            throw new PlaneInvalidBoundsException("PlaneInvalidBoundsException: "+bounds.x +" is not x valid bound for X axis");
+        else if(bounds.y <= 0)
+            throw new PlaneInvalidBoundsException("PlaneInvalidBoundsException: "+bounds.y +" is not x valid bound for Y axis");
 
         this.bounds = bounds;
 
@@ -22,15 +22,15 @@ public class Plane {
 
     @Override
     public String toString() {
-        return "(" + bounds.a + " " +  bounds.b +")";
+        return "(" + bounds.x + " " +  bounds.y +")";
     }
 
     public Integer getBoundX() {
-        return this.bounds.a;
+        return this.bounds.x;
     }
 
     public Integer getBoundY() {
-        return this.bounds.b;
+        return this.bounds.y;
     }
 
 }

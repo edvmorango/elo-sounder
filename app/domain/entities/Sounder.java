@@ -15,9 +15,9 @@ public class Sounder {
 
     public Sounder(Plane plane, Tuple<Integer, Integer> coordinate, Direction direction) throws SounderInvalidStartPointException{
 
-        if(coordinate.a > plane.getBoundX() || coordinate.b > plane.getBoundY())
+        if(coordinate.x > plane.getBoundX() || coordinate.y > plane.getBoundY())
             throw new SounderInvalidStartPointException("SounderInvalidStartPointException: "+coordinate+" is above of plane bounds");
-        else if(coordinate.a < 0 || coordinate.b < 0)
+        else if(coordinate.x < 0 || coordinate.y < 0)
             throw new SounderInvalidStartPointException("SounderInvalidStartPointException: "+coordinate+" is under of plane bounds ");
 
         this.plane = plane;
@@ -28,8 +28,8 @@ public class Sounder {
     @Override
     public String toString() {
         return this.plane
-                        + " " + this.coordinate.a
-                        + " " + this.coordinate.b
+                        + " " + this.coordinate.x
+                        + " " + this.coordinate.y
                         + " " + this.direction;
     }
 
@@ -65,21 +65,21 @@ public class Sounder {
     }
 
     private void moveY(Integer val) throws SounderMoveOutOfBoundsException {
-        Integer newY = this.coordinate.b + val;
+        Integer newY = this.coordinate.y + val;
 
         if(newY < 0 || newY > this.plane.getBoundY())
             throw new SounderMoveOutOfBoundsException("SounderMoveOutOfBoundsException: "+this.toString()+" going to Y: "+newY);
         else
-            this.coordinate = new Tuple<>(this.coordinate.a, newY);
+            this.coordinate = new Tuple<>(this.coordinate.x, newY);
     }
 
     private void moveX(Integer val) throws SounderMoveOutOfBoundsException {
-        Integer newX = this.coordinate.a + val;
+        Integer newX = this.coordinate.x + val;
 
         if(newX < 0 || newX > this.plane.getBoundX())
             throw new SounderMoveOutOfBoundsException("SounderMoveOutOfBoundsException: "+this.toString()+" going to X: "+newX);
         else
-            this.coordinate = new Tuple<>(newX, this.coordinate.b);
+            this.coordinate = new Tuple<>(newX, this.coordinate.y);
     }
 
     public enum Action {
@@ -158,8 +158,8 @@ public class Sounder {
     public Direction getDirection() { return direction; }
 
     public String getInfo() {
-        return this.coordinate.a
-                + " " + this.coordinate.b
+        return this.coordinate.x
+                + " " + this.coordinate.y
                 + " " + this.direction;
     }
 }

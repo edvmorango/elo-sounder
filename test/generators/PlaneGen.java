@@ -12,7 +12,7 @@ public class PlaneGen  {
     }
 
     public Gen<Plane> planes(){
-        return utilsGen.points().assuming( t -> t.a > 0 && t.b > 0 ).map(Plane::new);
+        return utilsGen.points().assuming( t -> t.x > 0 && t.y > 0 ).map(Plane::new);
     }
 
 

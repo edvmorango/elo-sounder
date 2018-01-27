@@ -2,12 +2,12 @@ package utils;
 
 public class Tuple<A,B> {
 
-    public final A a;
-    public final B b;
+    public final A x;
+    public final B y;
 
-    public Tuple(A a, B b){
-        this.a = a;
-        this.b = b;
+    public Tuple(A x, B y){
+        this.x = x;
+        this.y = y;
     }
 
 
@@ -20,7 +20,7 @@ public class Tuple<A,B> {
             return false;
 
         Tuple<?,?> tup = (Tuple<?,?>) obj;
-        return tup.a.equals(this.a) && tup.b.equals(this.b);
+        return tup.x.equals(this.x) && tup.y.equals(this.y);
     }
 
 

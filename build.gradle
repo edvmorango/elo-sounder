@@ -26,7 +26,7 @@ dependencies {
     play "com.typesafe.play:play-logback_$scalaVersion:$playVersion"
     play "com.h2database:h2:1.4.196"
     play 'io.swagger:swagger-play2:1.6.0'
-    play 'javax.xml.bind', name: 'jaxb-api', version: '2.1'
+    play 'javax.xml.bind:jaxb.api:2.1'
 
     playTest "org.assertj:assertj-core:3.6.2"
     playTest "org.awaitility:awaitility:2.0.0"

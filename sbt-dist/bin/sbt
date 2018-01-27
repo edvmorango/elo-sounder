@@ -14,7 +14,7 @@ realpath () {
   TARGET_FILE=$(basename "$TARGET_FILE")
 
   COUNT=0
-  while [ -L "$TARGET_FILE" -a $COUNT -lt 100 ]
+  while [ -L "$TARGET_FILE" -x $COUNT -lt 100 ]
   do
       TARGET_FILE=$(readlink "$TARGET_FILE")
       cd "$(dirname "$TARGET_FILE")"
@@ -86,7 +86,7 @@ Usage: $script_name [options]
   -sbt-version  <version>   use the specified version of sbt
   -sbt-jar      <path>      use the specified jar as the sbt launcher
   -sbt-rc                   use an RC version of sbt
-  -sbt-snapshot             use a snapshot version of sbt
+  -sbt-snapshot             use x snapshot version of sbt
 
   # java version (default: java from PATH, currently $(java -version 2>&1 | grep version))
   -java-home <path>         alternate JAVA_HOME
@@ -140,7 +140,7 @@ loadConfigFile() {
 # Here we pull in the global settings configuration.
 [[ -f "$etc_sbt_opts_file" ]] && set -- $(loadConfigFile "$etc_sbt_opts_file") "$@"
 # -- Windows behavior stub'd
-# JAVA_OPTS=$(cat "$WDIR/sbtconfig.txt" | sed -e 's/\r//g' -e 's/^#.*$//g' | sed ':a;N;$!ba;s/\n/ /g')
+# JAVA_OPTS=$(cat "$WDIR/sbtconfig.txt" | sed -e 's/\r//g' -e 's/^#.*$//g' | sed ':x;N;$!ba;s/\n/ /g')
 
 
 #  Pull in the project-level config file, if it exists.

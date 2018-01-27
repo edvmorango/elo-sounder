@@ -20,8 +20,8 @@ public class SounderGen {
     public Gen<Sounder> sounders(){
 
      return   planesGen.planes().zip(utilsGen.points(), Tuple::new)
-                .assuming( t -> t.a.getBoundX() >= t.b.a && t.a.getBoundY() >= t.b.b)
-                .zip(directions(), (t,ac) -> new Sounder(t.a,t.b,ac) );
+                .assuming( t -> t.x.getBoundX() >= t.y.x && t.x.getBoundY() >= t.y.y)
+                .zip(directions(), (t,ac) -> new Sounder(t.x,t.y,ac) );
 
     }
 

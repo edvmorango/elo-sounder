@@ -33,27 +33,27 @@ public class SounderPropertyTests implements WithQuickTheories {
             switch (d) {
                 case E:
 
-                    IntStream.rangeClosed(1, p.getBoundX() - c.a)
+                    IntStream.rangeClosed(1, p.getBoundX() - c.x)
                             .forEach( (i) -> s.act(Sounder.Action.MOVE));
 
-                    return  s.getCoordinate().a.equals(p.getBoundX());
+                    return  s.getCoordinate().x.equals(p.getBoundX());
 
                 case W:
 
-                    IntStream.rangeClosed(1, c.a)
+                    IntStream.rangeClosed(1, c.x)
                             .forEach( (i) -> s.act(Sounder.Action.MOVE));
-                    return s.getCoordinate().a.equals(0);
+                    return s.getCoordinate().x.equals(0);
                 case N:
 
-                    IntStream.rangeClosed(1, p.getBoundY() - c.b)
+                    IntStream.rangeClosed(1, p.getBoundY() - c.y)
                             .forEach( (i) -> s.act(Sounder.Action.MOVE));
 
-                    return s.getCoordinate().b.equals(p.getBoundY());
+                    return s.getCoordinate().y.equals(p.getBoundY());
                 case S:
 
-                    IntStream.rangeClosed(1, c.b )
+                    IntStream.rangeClosed(1, c.y)
                             .forEach( (i) -> s.act(Sounder.Action.MOVE));
-                    return s.getCoordinate().b.equals(0);
+                    return s.getCoordinate().y.equals(0);
                 default:
                     return false;
             }

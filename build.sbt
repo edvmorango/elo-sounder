@@ -19,4 +19,4 @@ libraryDependencies += "org.awaitility" % "awaitility" % "2.0.0" % Test
 libraryDependencies += "org.quicktheories" % "quicktheories" % "0.24" % Test
 
 // Make verbose tests
-testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-a", "-v"))
+testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-x", "-v"))

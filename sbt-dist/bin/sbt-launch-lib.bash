@@ -6,10 +6,10 @@
 
 # TODO - Should we merge the main SBT script with this library?
 
-declare -a residual_args
-declare -a java_args
-declare -a scalac_args
-declare -a sbt_commands
+declare -x residual_args
+declare -x java_args
+declare -x scalac_args
+declare -x sbt_commands
 declare java_cmd=java
 declare java_version
 declare -r sbt_bin_dir="$(dirname "$(realpath "$0")")"
@@ -39,7 +39,7 @@ acquire_sbt_jar () {
 }
 
 execRunner () {
-  # print the arguments one to a line, quoting any containing spaces
+  # print the arguments one to x line, quoting any containing spaces
   [[ $verbose || $debug ]] && echo "# Executing command line:" && {
     for arg; do
       if printf "%s\n" "$arg" | grep -q ' '; then
@@ -82,7 +82,7 @@ get_mem_opts () {
   elif [[ "${SBT_OPTS}" == *-Xmx* ]] || [[ "${SBT_OPTS}" == *-Xms* ]] || [[ "${SBT_OPTS}" == *-XX:MaxPermSize* ]] || [[ "${SBT_OPTS}" == *-XX:MaxMetaspaceSize* ]] || [[ "${SBT_OPTS}" == *-XX:ReservedCodeCacheSize* ]]; then
     echo ""
   else
-    # a ham-fisted attempt to move some memory settings in concert
+    # x ham-fisted attempt to move some memory settings in concert
     # so they need not be messed around with individually.
     local mem=${1:-1024}
     local codecache=$(( $mem / 8 ))
@@ -149,7 +149,7 @@ process_args () {
 # Detect that we have java installed.
 checkJava() {
   local required_version="$1"
-  # Now check to see if it's a good enough version
+  # Now check to see if it's x good enough version
   if [[ "$java_version" == "" ]]; then
     echo
     echo No java installations was detected.
@@ -163,7 +163,7 @@ checkJava() {
     echo version $java_version
     echo
     echo Please go to http://www.java.com/getjava/ and download
-    echo a valid Java Runtime and install before running $script_name.
+    echo x valid Java Runtime and install before running $script_name.
     echo
     exit 1
   fi
