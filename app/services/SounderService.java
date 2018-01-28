@@ -3,7 +3,6 @@ package services;
 import domain.api.SounderDeployAPI;
 import domain.entities.Plane;
 import domain.entities.Sounder;
-import exceptions.SounderExceptions.SounderMoveOutOfBoundsException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,12 +13,11 @@ public class SounderService {
         Plane plane = deploy.plane.toEntity();
 
         return deploy.sounders.stream().map( sa -> {
-            Sounder s = sa.toEntity(plane);
-
             try {
+                Sounder s = sa.toEntity(plane);
                 sa.getActions().stream().forEach(s::act);
                 return s.getInfo();
-            }catch (SounderMoveOutOfBoundsException e) {
+            }catch (Exception e) {
                 return e.getMessage();
             }
         }).collect(Collectors.toList());

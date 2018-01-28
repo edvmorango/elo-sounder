@@ -16,9 +16,9 @@ public class Sounder {
     public Sounder(Plane plane, Tuple<Integer, Integer> coordinate, Direction direction) throws SounderInvalidStartPointException{
 
         if(coordinate.x > plane.getBoundX() || coordinate.y > plane.getBoundY())
-            throw new SounderInvalidStartPointException("SounderInvalidStartPointException: "+coordinate+" is above of plane bounds");
+            throw new SounderInvalidStartPointException("("+coordinate.x+","+coordinate.y+") is outer of plane bounds");
         else if(coordinate.x < 0 || coordinate.y < 0)
-            throw new SounderInvalidStartPointException("SounderInvalidStartPointException: "+coordinate+" is under of plane bounds ");
+            throw new SounderInvalidStartPointException("("+coordinate.x+","+coordinate.y+") is outer of plane bounds");
 
         this.plane = plane;
         this.direction = direction;
@@ -95,7 +95,7 @@ public class Sounder {
                 case 'M': return MOVE;
                 case 'L': return LEFT;
                 case 'R': return RIGHT;
-                default: throw new SounderInvalidActionException("Invalid action "+value);
+                default: throw new SounderInvalidActionException("Invalid action '"+value+"'");
             }
         }
 
