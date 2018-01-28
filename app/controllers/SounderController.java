@@ -1,7 +1,6 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import domain.api.SounderAPI;
 import domain.api.SounderDeployAPI;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -32,22 +31,15 @@ public class SounderController extends Controller {
         if(json == null)
             return badRequest("Invalid content");
         else {
-
             try {
                 SounderDeployAPI api = Json.fromJson(json, SounderDeployAPI.class);
                 SounderService a = new SounderService();
-
                 return ok(Json.toJson(a.deploy(api)));
-
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-                return badRequest("This error: "+e.getMessage());
+                return badRequest(e.getMessage());
             }
-
         }
-
-
     }
 
 

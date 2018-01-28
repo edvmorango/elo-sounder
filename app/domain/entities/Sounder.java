@@ -25,15 +25,14 @@ public class Sounder {
         this.coordinate = coordinate;
     }
 
-    @Override
     public String toString() {
-        return this.plane
-                        + " " + this.coordinate.x
-                        + " " + this.coordinate.y
-                        + " " + this.direction;
+        return
+                "Coordinate (" + this.coordinate.x
+                        + "," + this.coordinate.y
+                        + ") Direction " + this.direction;
     }
 
-    public void act(Action ac) {
+    public void act(Action ac)  {
         switch (ac) {
             case MOVE:
                 move();
@@ -47,28 +46,28 @@ public class Sounder {
         }
     }
 
-    private void move() throws SounderMoveOutOfBoundsException{
-            switch (this.direction) {
-                case N:
-                    moveY(1);
-                    break;
-                case E:
-                    moveX(1);
-                    break;
-                case S:
-                    moveY(-1);
-                    break;
-                case W:
-                    moveX(-1);
-                    break;
-            }
+    private void move() throws SounderMoveOutOfBoundsException {
+        switch (this.direction) {
+            case N:
+                moveY(1);
+                break;
+            case E:
+                moveX(1);
+                break;
+            case S:
+                moveY(-1);
+                break;
+            case W:
+                moveX(-1);
+                break;
+        }
     }
 
     private void moveY(Integer val) throws SounderMoveOutOfBoundsException {
         Integer newY = this.coordinate.y + val;
 
         if(newY < 0 || newY > this.plane.getBoundY())
-            throw new SounderMoveOutOfBoundsException("SounderMoveOutOfBoundsException: "+this.toString()+" going to Y: "+newY);
+            throw new SounderMoveOutOfBoundsException("Invalid move, last contact was in: "+this.toString());
         else
             this.coordinate = new Tuple<>(this.coordinate.x, newY);
     }
@@ -77,7 +76,7 @@ public class Sounder {
         Integer newX = this.coordinate.x + val;
 
         if(newX < 0 || newX > this.plane.getBoundX())
-            throw new SounderMoveOutOfBoundsException("SounderMoveOutOfBoundsException: "+this.toString()+" going to X: "+newX);
+            throw new SounderMoveOutOfBoundsException("Invalid move, last contact was in: "+this.toString());
         else
             this.coordinate = new Tuple<>(newX, this.coordinate.y);
     }
@@ -111,14 +110,13 @@ public class Sounder {
             this.rawValue = value;
         }
 
-        private Direction getByIntValue(int value) throws SounderInvalidDirectionException{
-             switch (value) {
-                 case 0: return N;
-                 case 1: return E;
-                 case 2: return S;
-                 case 3: return W;
-                 default: throw new SounderInvalidDirectionException("Invalid direction "+value);
-             }
+        private Direction getByIntValue(int value) {
+            switch (value) {
+                case 0: return N;
+                case 1: return E;
+                case 2: return S;
+                default: return W;
+            }
         }
 
         public static Direction getByCharValue(char value){
@@ -132,27 +130,22 @@ public class Sounder {
         }
 
         public Direction rotateLeft() {
-           try {
-               if (this.rawValue == 0)
-                   return getByIntValue(3);
-               else
-                   return getByIntValue(this.rawValue - 1);
-           } catch (SounderInvalidDirectionException e){
-               Logger.error("Could't rotate left \n"+e.getMessage());
-               return this;
-            }
+            if (this.rawValue == 0)
+                return getByIntValue(3);
+            else
+                return getByIntValue(this.rawValue - 1);
         }
 
         public Direction rotateRight() {
-           try {
-               if (this.rawValue == 3)
-                   return getByIntValue(0);
-               else
-                   return getByIntValue(this.rawValue + 1);
-           } catch (SounderInvalidDirectionException e){
-               Logger.error("Could't rotate right \n"+e.getMessage());
-               return this;
-           }
+            try {
+                if (this.rawValue == 3)
+                    return getByIntValue(0);
+                else
+                    return getByIntValue(this.rawValue + 1);
+            } catch (SounderInvalidDirectionException e){
+                Logger.error("Could't rotate right \n"+e.getMessage());
+                return this;
+            }
         }
 
     }
