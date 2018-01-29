@@ -17,6 +17,10 @@ libraryDependencies += "javax.xml.bind" % "jaxb-api" % "2.1"
 libraryDependencies += "org.assertj" % "assertj-core" % "3.6.2" % Test
 libraryDependencies += "org.awaitility" % "awaitility" % "2.0.0" % Test
 libraryDependencies += "org.quicktheories" % "quicktheories" % "0.24" % Test
+libraryDependencies += "com.mscharhag.oleaster" % "oleaster-matcher" % "0.2.0"
+libraryDependencies += "com.mscharhag.oleaster" % "oleaster-runner" % "0.2.0"
+
+
 
 // Make verbose tests
 testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-x", "-v"))

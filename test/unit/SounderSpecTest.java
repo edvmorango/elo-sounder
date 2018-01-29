@@ -16,7 +16,7 @@ import static play.test.Helpers.contentAsString;
  *
  * https://www.playframework.com/documentation/latest/JavaTest
  */
-public class SounderTests {
+public class SounderSpecTest {
 
     private Plane plane = new Plane( new Tuple<>(5,5));
 

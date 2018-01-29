@@ -137,17 +137,11 @@ public class Sounder {
         }
 
         public Direction rotateRight() {
-            try {
                 if (this.rawValue == 3)
                     return getByIntValue(0);
                 else
                     return getByIntValue(this.rawValue + 1);
-            } catch (SounderInvalidDirectionException e){
-                Logger.error("Could't rotate right \n"+e.getMessage());
-                return this;
-            }
         }
-
     }
 
     public Plane getPlane() {
