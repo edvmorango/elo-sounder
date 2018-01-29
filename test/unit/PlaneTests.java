@@ -1,7 +1,7 @@
 package unit;
 
 import domain.entities.Plane;
-import exceptions.PlaneExceptions.PlaneInvalidBoundsException;
+import domain.entities.exceptions.PlaneInvalidBoundsException;
 import org.junit.Test;
 import utils.Tuple;
 

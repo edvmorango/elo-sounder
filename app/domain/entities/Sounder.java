@@ -1,9 +1,9 @@
 package domain.entities;
 
-import exceptions.SounderExceptions.SounderInvalidActionException;
-import exceptions.SounderExceptions.SounderInvalidDirectionException;
-import exceptions.SounderExceptions.SounderInvalidStartPointException;
-import exceptions.SounderExceptions.SounderMoveOutOfBoundsException;
+import domain.entities.exceptions.SounderInvalidActionException;
+import domain.entities.exceptions.SounderInvalidDirectionException;
+import domain.entities.exceptions.SounderInvalidStartPointException;
+import domain.entities.exceptions.SounderMoveOutOfBoundsException;
 import play.Logger;
 import utils.Tuple;
 

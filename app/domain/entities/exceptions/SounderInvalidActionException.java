@@ -1,4 +1,4 @@
-package exceptions.SounderExceptions;
+package domain.entities.exceptions;
 
 
 public class SounderInvalidActionException extends RuntimeException {

@@ -1,6 +1,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.google.inject.Inject;
 import domain.api.SounderDeployAPI;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -15,6 +16,7 @@ import services.SounderService;
 @Api(value = "/sounder", description = "Sounder API", produces = "application/json")
 public class SounderController extends Controller {
 
+    @Inject SounderService service;
 
     @ApiOperation(
             nickname = "Sounder",
@@ -33,8 +35,7 @@ public class SounderController extends Controller {
         else {
             try {
                 SounderDeployAPI api = Json.fromJson(json, SounderDeployAPI.class);
-                SounderService a = new SounderService();
-                return ok(Json.toJson(a.deploy(api)));
+                return ok(Json.toJson(service.deploy(api)));
             } catch (Exception e) {
                 e.printStackTrace();
                 return badRequest(e.getMessage());

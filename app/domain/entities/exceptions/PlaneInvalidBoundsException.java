@@ -1,4 +1,4 @@
-package exceptions.PlaneExceptions;
+package domain.entities.exceptions;
 
 public class PlaneInvalidBoundsException extends RuntimeException {
 

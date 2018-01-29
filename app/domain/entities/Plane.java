@@ -1,6 +1,6 @@
 package domain.entities;
 
-import exceptions.PlaneExceptions.PlaneInvalidBoundsException;
+import domain.entities.exceptions.PlaneInvalidBoundsException;
 import utils.Tuple;
 
 public class Plane {

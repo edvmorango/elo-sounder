@@ -2,8 +2,8 @@ package unit;
 
 import domain.entities.Plane;
 import domain.entities.Sounder;
-import exceptions.SounderExceptions.SounderInvalidStartPointException;
-import exceptions.SounderExceptions.SounderMoveOutOfBoundsException;
+import domain.entities.exceptions.SounderInvalidStartPointException;
+import domain.entities.exceptions.SounderMoveOutOfBoundsException;
 import org.junit.Test;
 import utils.Tuple;
 
