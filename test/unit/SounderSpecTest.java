@@ -1,4 +1,4 @@
-package unit.domain;
+package unit;
 
 import com.google.inject.Inject;
 import com.mscharhag.oleaster.runner.OleasterRunner;

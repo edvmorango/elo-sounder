@@ -12,11 +12,11 @@ import java.util.stream.IntStream;
 
 
 
-public class SounderPropertyTests implements WithQuickTheories {
+public class SounderPropertySpecTest implements WithQuickTheories {
 
     private SounderGen gen;
 
-    public SounderPropertyTests() {
+    public SounderPropertySpecTest() {
         gen = new SounderGen();
     }
 

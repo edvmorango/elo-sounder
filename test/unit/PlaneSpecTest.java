@@ -1,4 +1,4 @@
-package unit.domain;
+package unit;
 
 import com.mscharhag.oleaster.runner.OleasterRunner;
 import domain.entities.Plane;
