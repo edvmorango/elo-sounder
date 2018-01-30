@@ -10,7 +10,7 @@ This project was developed using:
  - Playframework 2.6 
  - Swagger
  - QuickTheories (Property Based Testing)
-
+ - Oleaster (Tests)
 
 The steps to runs are:
 
@@ -20,12 +20,18 @@ The steps to runs are:
  
 This steps can be facilitated using Intellij
 
-Into project directory
+Into project directory:
 
+  - Build and Download dependecies
   ``` sbt compile ```
+
+  - Tests
+  ``` sbt test ````
+
+  - Run
   ``` sbt run ```
- 
-Go to ``` localhost:9000/docs/ ```
+
+  Go to ``` localhost:9000/docs/ ```
 
 
 The specification example:
@@ -54,3 +60,4 @@ The specification example:
   ]
 }
 ```
+
