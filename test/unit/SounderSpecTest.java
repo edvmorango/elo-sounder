@@ -1,14 +1,11 @@
 package unit;
 
-import com.google.inject.Inject;
 import com.mscharhag.oleaster.runner.OleasterRunner;
 import domain.entities.Plane;
 import domain.entities.Sounder;
-import domain.entities.exceptions.PlaneInvalidBoundsException;
 import domain.entities.exceptions.SounderInvalidStartPointException;
 import domain.entities.exceptions.SounderMoveOutOfBoundsException;
 import org.junit.runner.RunWith;
-import services.SounderService;
 import utils.Tuple;
 
 import static com.mscharhag.oleaster.matcher.Matchers.expect;

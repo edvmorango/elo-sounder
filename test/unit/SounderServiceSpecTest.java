@@ -2,13 +2,10 @@ package unit;
 
 
 import com.mscharhag.oleaster.runner.OleasterRunner;
-import domain.api.SounderDeployAPI;
-import domain.entities.Plane;
 import domain.entities.exceptions.PlaneInvalidBoundsException;
 import fixture.SounderDeployAPIFixture;
 import org.junit.runner.RunWith;
-import services.SounderService;
-import utils.Tuple;
+import services.SounderServiceImpl;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ import static com.mscharhag.oleaster.runner.StaticRunnerSupport.it;
 
 @RunWith(OleasterRunner.class)
 public class SounderServiceSpecTest {
-    SounderService sounderService = new SounderService();
+    SounderServiceImpl sounderService = new SounderServiceImpl();
 
     {
 

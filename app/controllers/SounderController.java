@@ -10,13 +10,14 @@ import io.swagger.annotations.ApiOperation;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-import services.SounderService;
+import services.SounderServiceImpl;
 
 
 @Api(value = "/sounder", description = "Sounder API", produces = "application/json")
 public class SounderController extends Controller {
 
-    @Inject SounderService service;
+    @Inject
+    SounderServiceImpl service;
 
     @ApiOperation(
             nickname = "Sounder",
@@ -37,7 +38,6 @@ public class SounderController extends Controller {
                 SounderDeployAPI api = Json.fromJson(json, SounderDeployAPI.class);
                 return ok(Json.toJson(service.deploy(api)));
             } catch (Exception e) {
-                e.printStackTrace();
                 return badRequest(e.getMessage());
             }
         }
