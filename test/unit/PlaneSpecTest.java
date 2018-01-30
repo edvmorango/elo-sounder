@@ -14,7 +14,7 @@ import static com.mscharhag.oleaster.runner.StaticRunnerSupport.it;
 public class PlaneSpecTest {
     {
 
-        describe("Crawler", () -> {
+        describe("Planes", () -> {
             it("should create a plane", () -> {
 
                 Plane p = new Plane(new Tuple<>(5, 10));
